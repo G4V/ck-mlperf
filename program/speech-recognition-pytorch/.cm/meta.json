@@ -5,6 +5,7 @@
   "no_target_file": "yes",
   "process_in_tmp": "yes",
   "program": "yes",
+  "pass_env_to_resolve": "yes",
   "run_cmds": {
     "default": {
       "ignore_return_code": "no",
@@ -55,6 +56,24 @@
       "name": "PyTorch framework",
       "sort": 15,
       "tags": "lib,pytorch"
+    },
+    "plugin-orig": {
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Pre original plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-pre,orig",
+      "enable_if_env": [
+        { "CK_RNNT_PRE": ["Original"] }
+      ]
+    },
+    "plugin-naive": {
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Pre naive plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-pre,naive",
+      "enable_if_env": [
+        { "CK_RNNT_PRE": ["Naive"] }
+      ]
     }
   },
   "run_vars": {
@@ -64,7 +83,8 @@
     "CK_RNNT_MANIFEST": "$<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/wav-list.json",
     "CK_RNNT_SEED": "87",
     "CK_RNNT_TOML": "$<<CK_ENV_MLPERF_INFERENCE>>$/v0.7/speech_recognition/rnnt/pytorch/configs/rnnt.toml",
-    "CK_RNNT_MAX_DURATION": 3600.0
+    "CK_RNNT_MAX_DURATION": 3600.0,
+    "CK_RNNT_PRE": "Original"
   },
   "tags": [
     "speech-recognition",
